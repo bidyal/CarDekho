@@ -15,7 +15,7 @@ def predict_api():
     print(np.array(list(data.values())).reshape(1,-1))
     new_data=scaler.transform(np.array(list(data.values())).reshape(1,-1))
     output=regmodel.predict(new_data)[0]
-    output=10**output
+    output=10**output ##Log10
     print(output)
     return jsonify(output)
 @app.route('/predict',methods=['POST'])
