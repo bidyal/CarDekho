@@ -15,6 +15,7 @@ def predict_api():
     print(np.array(list(data.values())).reshape(1,-1))
     new_data=scaler.transform(np.array(list(data.values())).reshape(1,-1))
     output=regmodel.predict(new_data)[0]
+    output=10**output
     print(output)
     return jsonify(output)
 @app.route('/predict',methods=['POST'])
@@ -23,6 +24,7 @@ def predict():
     final_input=scaler.transform(np.array(data).reshape(1,-1))
     print(final_input)
     output=regmodel.predict(final_input)[0]
+    output=10**output
     return render_template('home.html',prediction_text="The car price prediction is {}".format(output))
 
 if __name__=="__main__":
