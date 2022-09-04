@@ -1,3 +1,59 @@
-<h1>
-    hello world
-</h1>
+<!DOCTYPE html>
+<html >
+
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Car Price Prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+      <input type="text" name="enginesize" placeholder="enginesize" required="required" /><br>
+    	<input type="text" name="compressionratio" placeholder="compressionratio" required="required" /><br>
+        <input type="text" name="mileage" placeholder="mileage" required="required" /><br>
+        <input type="text" name="fueltype" placeholder="fueltype" required="required" /><br>
+        <input type="text" name="aspiration" placeholder="aspiration" required="required" /><br>
+        <input type="text" name="doornumber" placeholder="doornumber" required="required" /><br>
+        <input type="text" name="drivewheel" placeholder="drivewheel" required="required" /><br>
+        <input type="text" name="cylindernumber" placeholder="cylindernumber" required="required" /><br>
+        <input type="text" name="company_cat" placeholder="company_cat" required="required" /><br>
+        <input type="text" name="body_convertible" placeholder="body_convertible" required="required" /><br>
+        <input type="text" name="body_hardtop" placeholder="body_hardtop" required="required" /><br>
+        <input type="text" name="body_hatchback" placeholder="body_hatchback" required="required" /><br>
+        <input type="text" name="body_sedan" placeholder="body_sedan" required="required" /><br>
+        <input type="text" name="body_wagon" placeholder="body_wagon" required="required" /><br>
+        <input type="text" name="etype_dohc" placeholder="etype_dohc" required="required" /><br>
+        <input type="text" name="etype_l" placeholder="etype_l" required="required" /><br>
+        <input type="text" name="etype_ohc" placeholder="etype_ohc" required="required" /><br>
+        <input type="text" name="etype_ohcf" placeholder="etype_ohcf" required="required" /><br>
+        <input type="text" name="etype_ohcv" placeholder="etype_ohcv" required="required" /><br>
+        <input type="text" name="fsystem_1bbl" placeholder="fsystem_1bbl" required="required" /><br>
+        <input type="text" name="fsystem_2bbl" placeholder="fsystem_2bbl" required="required" /><br>
+        <input type="text" name="fsystem_idi" placeholder="fsystem_idi" required="required" /><br>
+        <input type="text" name="fsystem_mpfi" placeholder="fsystem_mpfi" required="required" /><br>
+        <input type="text" name="fsystem_spdi" placeholder="fsystem_spdi" required="required" /><br>
+
+       
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+  
+   
+ </div>
+ {{prediction_text}}
+
+</body>
+</html

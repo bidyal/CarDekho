@@ -1,9 +1,9 @@
 import pickle
-from flask import Flask,app,jesonify,url_for,render_template,redirect,flash,session,escape,request
+from flask import Flask,app,jsonify,url_for,render_template,redirect,flash,session,escape,request
 import pandas as pd
 import numpy as np
 app=Flask(__name__)
-regmodel=pickle.load(open('regmodel_car','rb'))
+regmodel=pickle.load(open('regmodel_car.pkl','rb'))
 scaler=pickle.load(open('scaling.pkl','rb'))
 @app.route('/')
 def home():
@@ -16,7 +16,15 @@ def predict_api():
     new_data=scaler.transform(np.array(list(data.values())).reshape(1,-1))
     output=regmodel.predict(new_data)[0]
     print(output)
-    return jesonify(output)
+    return jsonify(output)
+@app.route('/predict',methods=['POST'])
+def predict():
+    data=[float(x) for x in request.form.values()]
+    final_input=scaler.transform(np.array(data).reshape(1,-1))
+    print(final_input)
+    output=regmodel.predict(final_input)[0]
+    return render_template('home.html',prediction_text="The car price prediction is {}".format(output))
+
 if __name__=="__main__":
     app.run(debug=True)
 
